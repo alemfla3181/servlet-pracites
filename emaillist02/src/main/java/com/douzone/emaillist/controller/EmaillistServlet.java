@@ -23,9 +23,8 @@ public class EmaillistServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 
 		String action = request.getParameter("a");
-		if ("list".equals(action)) {
-
-		} else if ("form".equals(action)) {
+		
+		if ("form".equals(action)) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/form.jsp");
 			rd.forward(request, response);
 		} else if ("add".equals(action)) {
