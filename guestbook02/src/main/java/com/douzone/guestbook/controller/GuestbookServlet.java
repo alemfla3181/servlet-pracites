@@ -21,18 +21,20 @@ public class GuestbookServlet extends HttpServlet {
 		String action = request.getParameter("a");
 
 		if ("form".equals(action)) {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/deleteform.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/form.jsp");
 			rd.forward(request, response);
 		}else if ("add".equals(action)) {
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
 			String message = request.getParameter("message");
+			String hostname = request.getParameter("address").replaceAll("DESKTOP-", "");
 			
 			guestbookVo vo = new guestbookVo();
 			vo.setName(name);
 			vo.setPassword(password);
 			vo.setMessage(message);			
-
+			vo.setHostname(hostname);
+			
 			new guestbookDao().insert(vo);
 			
 			response.sendRedirect(request.getContextPath() + "/gb");

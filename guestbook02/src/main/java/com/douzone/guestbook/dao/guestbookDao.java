@@ -20,12 +20,13 @@ public class guestbookDao {
 		try {
 			connection = getConnection();
 			
-			String sql ="insert into guestbook(no,name,password,message) values(null, ?, ?, ?)";
+			String sql ="insert into guestbook(no,name,password,message,hostname) values(null, ?, ?, ?, ?)";
 			pstmt = connection.prepareStatement(sql);
 
 			pstmt.setString(1, vo.getName());
 			pstmt.setString(2, vo.getPassword());
 			pstmt.setString(3, vo.getMessage());
+			pstmt.setString(4, vo.getHostname());
 			
 			int count = pstmt.executeUpdate();
 			result = count == 1;
@@ -71,13 +72,15 @@ public class guestbookDao {
 				String name = rs.getString(2);
 				String password = rs.getString(3);
 				String message = rs.getString(4);
-				String dateTime = rs.getString(5);
+				String hostname = rs.getString(5);
+				String dateTime = rs.getString(6);
 				
 				guestbookVo vo = new guestbookVo();
 				vo.setNo(no);
 				vo.setName(name);
 				vo.setPassword(password);
 				vo.setMessage(message);
+				vo.setHostname(hostname);
 				vo.setDateTime(dateTime);
 				
 				result.add(vo);
