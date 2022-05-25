@@ -6,8 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	List<guestbookVo> list = new guestbookDao().findAll();
-	InetAddress ip = InetAddress.getLocalHost();  
+	List<guestbookVo> list = new guestbookDao().findAll();	 
 	%>
 <html>
 <head>
@@ -29,7 +28,6 @@
 			</tr>
 			<tr>
 				<td colspan=4 align=right><input type="submit" VALUE="등록"></td>
-				<input type=hidden name="address" value="<%=ip.getHostName()%>">
 			</tr>
 		</table>
 	</form>

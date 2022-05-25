@@ -1,6 +1,7 @@
 package com.douzone.guestbook.controller;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,11 +14,13 @@ import com.douzone.guestbook.dao.guestbookDao;
 import com.douzone.guestbook.vo.guestbookVo;
 
 public class GuestbookServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		InetAddress ip = InetAddress.getLocalHost(); 
 		String action = request.getParameter("a");
 
 		if ("form".equals(action)) {
@@ -27,7 +30,7 @@ public class GuestbookServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
 			String message = request.getParameter("message");
-			String hostname = request.getParameter("address").replaceAll("DESKTOP-", "");
+			String hostname = ip.getHostName().replaceAll("DESKTOP-", "");
 			
 			guestbookVo vo = new guestbookVo();
 			vo.setName(name);
