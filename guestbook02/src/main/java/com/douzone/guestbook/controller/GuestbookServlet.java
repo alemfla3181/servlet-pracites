@@ -30,7 +30,7 @@ public class GuestbookServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
 			String message = request.getParameter("message");
-			String hostname = ip.getHostName().replaceAll("DESKTOP-", "");
+			String hostname = ip.getHostAddress();
 			
 			guestbookVo vo = new guestbookVo();
 			vo.setName(name);
