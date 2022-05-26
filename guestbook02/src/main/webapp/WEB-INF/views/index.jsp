@@ -44,7 +44,6 @@
 			<td><%=count%></td>
 			<td><%=vo.getName()%></td>
 			<td><%=vo.getDateTime()%></td>
-			<td><%=vo.getHostname() %></td>
 			<td><a
 				href="<%=request.getContextPath()%>/gb?a=form&no=<%=vo.getNo()%>">삭제</a></td>
 		</tr>

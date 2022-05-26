@@ -6,15 +6,6 @@ public class guestbookVo {
 	private String password;
 	private String message;
 	private String dateTime;
-	private String hostname;
-
-	public String getHostname() {
-		return hostname;
-	}
-
-	public void setHostname(String hostname) {
-		this.hostname = hostname;
-	}
 
 	public Long getNo() {
 		return no;
@@ -59,7 +50,6 @@ public class guestbookVo {
 	@Override
 	public String toString() {
 		return "guestbookVo [no=" + no + ", name=" + name + ", password=" + password + ", message=" + message
-				+ ", dateTime=" + dateTime + ", hostname=" + hostname + "]";
-	}	
-
+				+ ", dateTime=" + dateTime + "]";
+	}
 }

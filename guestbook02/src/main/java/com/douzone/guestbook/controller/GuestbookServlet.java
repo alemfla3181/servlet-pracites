@@ -20,40 +20,36 @@ public class GuestbookServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		InetAddress ip = InetAddress.getLocalHost(); 
 		String action = request.getParameter("a");
 
 		if ("form".equals(action)) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/form.jsp");
 			rd.forward(request, response);
-		}else if ("add".equals(action)) {
+		} else if ("add".equals(action)) {
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
 			String message = request.getParameter("message");
-			String hostname = ip.getHostAddress();
-			
+
 			guestbookVo vo = new guestbookVo();
 			vo.setName(name);
 			vo.setPassword(password);
-			vo.setMessage(message);			
-			vo.setHostname(hostname);
-			
+			vo.setMessage(message);
+
 			new guestbookDao().insert(vo);
-			
+
 			response.sendRedirect(request.getContextPath() + "/gb");
-		} else if("delete".equals(action)) { 
+		} else if ("delete".equals(action)) {
 			String password = request.getParameter("password");
 			String no = request.getParameter("no");
-			
+
 			guestbookVo vo = new guestbookVo();
 			vo.setNo(Long.parseLong(no));
 			vo.setPassword(password);
-			
-			if(new guestbookDao().delete(vo)){
-				response.sendRedirect(request.getContextPath()+ "/gb");
-			}		
-		}
-		else{
+
+			if (new guestbookDao().delete(vo)) {
+				response.sendRedirect(request.getContextPath() + "/gb");
+			}
+		} else {
 			List<guestbookVo> list = new guestbookDao().findAll();
 
 			request.setAttribute("list", list);
