@@ -12,4 +12,4 @@ insert into guestbook(no,name,password,message) values(null, "둘리", "1234", "
 
 insert into guestbook(no,name,password,message) values(null, "또치", "425", "6364");
 
-delete from guestbook where no > 0;
+delete from guestbook where no > 34;
