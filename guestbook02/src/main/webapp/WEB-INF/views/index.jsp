@@ -14,7 +14,7 @@
 <title>방명록</title>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/gb?a=add" method="post">
+	<form action="${pageContext.request.contextPath}/gb?a=add" method="post">
 		<table border=1 width=500>
 			<tr>
 				<td>이름</td>
@@ -45,7 +45,7 @@
 			<td><%=vo.getName()%></td>
 			<td><%=vo.getDateTime()%></td>
 			<td><a
-				href="<%=request.getContextPath()%>/gb?a=form&no=<%=vo.getNo()%>">삭제</a></td>
+				href="${pageContext.request.contextPath}/gb?a=form&no=<%=vo.getNo()%>">삭제</a></td>
 		</tr>
 		<tr>
 			<td colspan=4><%=vo.getMessage().replaceAll("\n", "<br/>").replaceAll(" ", "&ensp;")%></td>
