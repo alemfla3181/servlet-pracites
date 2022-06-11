@@ -3,9 +3,12 @@
 desc guestbook;
 
 select count from guestbook where no = 1;
-update guestbook set count=1 where no= 45;
+update guestbook set count=-500 where no= 78;
 
-select * from guestbook order by no desc;
+select * from guestbook order by count desc;
+select * from guestbook;
+
+select last_insert_id();
 
 select password from guestbook where no = 3;
 
